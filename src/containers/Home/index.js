@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { SideBar } from 'components/SideBar';
+import { PostList } from 'components/PostList';
 import * as HomeActions from './actions';
-import logo from './images/logo.svg';
 import './style.css';
 
-const mapStateToProps = ({ demo }) => ({
-  demo,
+const mapStateToProps = ({ home }) => ({
+  home,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -16,30 +17,24 @@ const mapDispatchToProps = dispatch => ({
 
 export class Home extends Component {
   static propTypes = {
-    demo: PropTypes.object.isRequired,
+    home: PropTypes.object.isRequired,
     homeActions: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
     this.props.homeActions.fetchHome();
+    this.props.homeActions.fetchPostList();
   }
 
   render() {
-    const { hello: { title, intro, text } } = this.props.demo.toJS();
+    const { home, postList } = this.props.home.toJS();
 
     return (
-      <div className="Home">
-        <header className="Home-header">
-          <img src={logo} className="Home-logo" alt="logo" />
-          <h1 className="Home-title">
-            {title}
-          </h1>
-        </header>
-        <p className="Home-intro">
-          {intro}
-          <br />
-          {text}
-        </p>
+      <div className="page-container">
+        <SideBar data={home} />
+        <div className="post-list">
+          <PostList data={postList} />
+        </div>
       </div>
     );
   }

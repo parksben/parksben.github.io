@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import demo from 'containers/Demo/reducer';
+import home from 'containers/Home/reducer';
 
 export default asyncReducers =>
   combineReducers({
-    demo,
+    home,
     routing: routerReducer,
     ...asyncReducers,
   });

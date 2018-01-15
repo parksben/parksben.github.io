@@ -1,10 +1,10 @@
-import Demo from 'containers/Demo';
+import Home from 'containers/Home';
 
 export const createRoutes = () => {
-  const demo = {
+  const home = {
     path: '/',
-    component: Demo,
+    component: Home,
     exact: true,
   };
-  return [demo];
+  return [home];
 };

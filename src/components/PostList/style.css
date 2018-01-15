@@ -1,0 +1,117 @@
+#posts {
+  padding: 6em 4em;
+  overflow: hidden;
+}
+
+#posts h2 {
+  font-size: 1.4em;
+  line-height: 2.2em;
+  margin: 0 0 1em 0;
+}
+
+#posts .row {
+  margin: 0 0 -1px -2.5em;
+  border-bottom: solid 1px transparent;
+  box-sizing: border-box;
+}
+
+#posts .row > * {
+  float: left;
+  box-sizing: border-box;
+  padding: 0 0 0 2.5em;
+}
+
+#posts .row:after,
+#posts .row:before {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+
+#posts .post-item {
+  margin: 0 0 2em 0;
+}
+
+#posts .thumb {
+  display: inline-block;
+  margin: 0 0 2em 0;
+  width: 26.4em;
+  height: 15.5em;
+  text-align: center;
+  border-radius: 0.35em;
+  border: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#posts .thumb::before {
+  transition: opacity 0.2s ease-in-out;
+  border-radius: 0.35em;
+  background: #222;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0.3;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  width: 100%;
+  display: block;
+}
+
+#posts .thumb:hover::before {
+  opacity: 0.6;
+}
+
+#posts .thumb::after {
+  transition: opacity 0.2s ease-in-out;
+  border-radius: 0.35em;
+  border: solid 3px rgba(255, 255, 255, 0.5);
+  color: #fff;
+  content: 'View';
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: 400;
+  left: 50%;
+  line-height: 2.25em;
+  margin: -1.25em 0 0 -3em;
+  opacity: 0;
+  padding: 0 1.5em;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  text-decoration: none;
+  top: 50%;
+  white-space: nowrap;
+}
+
+#posts .thumb:hover::after {
+  opacity: 1;
+}
+
+#posts .thumb img {
+  display: block;
+  border-radius: 0.35em;
+  width: 100%;
+  margin-top: 7.75em;
+  transform: translate(0, -50%);
+}
+
+#posts .post-item h3 {
+  font-size: 1.2em;
+  line-height: 1.6em;
+  margin: 0 0 0.5em 0;
+  color: #787878;
+  max-width: 22em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#posts .post-item p {
+  font-size: 0.8em;
+  line-height: 1.5em;
+  margin: 0;
+  color: #a2a2a2;
+}
