@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import defaultThumbs from './images';
 import './style.css';
@@ -20,22 +21,31 @@ export class PostList extends Component {
     ],
   };
 
+  _loadThumb = (thumb, i) => {
+    if (!thumb.length) {
+      return defaultThumbs[i % defaultThumbs.length];
+    }
+    if (/http(s)?/gi.test(thumb)) {
+      return thumb;
+    }
+
+    const image = require(`../../${thumb}`);
+    return image;
+  };
+
   render() {
     const postItems = this.props.data.map((p, i) =>
       <article className="post-item" key={`post-${p.date}-${p.title}`}>
-        <a className="thumb" href={p.url}>
-          <img
-            src={p.thumb || defaultThumbs[i % defaultThumbs.length]}
-            alt=""
-          />
-        </a>
-        <a href={p.url}>
+        <Link className="thumb" to={p.url}>
+          <img src={this._loadThumb(p.thumb, i)} alt="" />
+        </Link>
+        <Link to={p.url}>
           <h3 title={p.title}>
             {p.title}
           </h3>
-        </a>
+        </Link>
         <p>
-          {p.date}
+          {p.time}
         </p>
       </article>
     );

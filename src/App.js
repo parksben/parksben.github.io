@@ -7,6 +7,7 @@ import { createRoutes } from 'routes';
 import configureStore from 'store';
 import 'normalize.css';
 import 'antd/dist/antd.css';
+import 'github-markdown-css';
 import 'App.css';
 
 export const history = createHistory();

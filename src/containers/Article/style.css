@@ -1,0 +1,23 @@
+.page-container article {
+  min-height: 300px;
+  width: 65%;
+  margin-left: 35%;
+  padding: 6em 4em;
+}
+
+article .inner {
+  max-width: 72em;
+}
+
+article .content {
+  margin-top: 3.6em;
+}
+
+article .go-home h2 {
+  font-size: 1.4em;
+  line-height: 2.2em;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1em;
+  border: 0;
+}
