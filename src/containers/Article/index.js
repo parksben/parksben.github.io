@@ -21,7 +21,7 @@ export class Article extends Component {
     return (
       <div className="page-container markdown-body">
         <SideBar data={siteConfig} />
-        <article>
+        <article className="post-container">
           <Link to="/" className="go-home">
             <h2>← 返回主页</h2>
           </Link>

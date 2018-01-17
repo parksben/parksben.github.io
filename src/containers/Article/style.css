@@ -1,24 +1,24 @@
-.page-container article {
+.page-container .post-container {
   min-height: 300px;
   width: 65%;
   margin-left: 35%;
   padding: 6em 4em;
 }
 
-article .inner {
+.post-container .inner {
   max-width: 72em;
 }
 
-article .content {
+.post-container .content {
   margin-top: 3.6em;
 }
 
-article .go-home {
+.post-container .go-home {
   display: inline-block;
   margin-bottom: 1em;
 }
 
-article .go-home h2 {
+.post-container .go-home h2 {
   font-size: 1.4em;
   line-height: 2.2em;
   padding: 0;
