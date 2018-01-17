@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { randomId } from 'utils';
 import './style.css';
 
 export class SideBar extends Component {
@@ -18,6 +19,22 @@ export class SideBar extends Component {
       <div className="tag-container">
         {items}
       </div>
+    );
+  }
+
+  renderSocialLink(data) {
+    const items = data.map(d =>
+      <li key={`social_${randomId()}`}>
+        <a href={d.link} className="link">
+          {d.text}
+        </a>
+      </li>
+    );
+
+    return (
+      <ul className="links">
+        {items}
+      </ul>
     );
   }
 
@@ -56,28 +73,7 @@ export class SideBar extends Component {
         </div>
         <footer id="footer">
           <div className="inner">
-            <ul className="links">
-              <li>
-                <a href={social.jianshu} className="link">
-                  简书
-                </a>
-              </li>
-              <li>
-                <a href={social.juejin} className="link">
-                  掘金
-                </a>
-              </li>
-              <li>
-                <a href={social.github} className="link">
-                  github
-                </a>
-              </li>
-              <li>
-                <a href={social.segmentfault} className="link">
-                  segmentfault
-                </a>
-              </li>
-            </ul>
+            {this.renderSocialLink(social)}
             <p className="copyright">
               {copyright}
             </p>
