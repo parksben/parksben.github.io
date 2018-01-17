@@ -13,11 +13,15 @@ article .content {
   margin-top: 3.6em;
 }
 
+article .go-home {
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
 article .go-home h2 {
   font-size: 1.4em;
   line-height: 2.2em;
   padding: 0;
   margin: 0;
-  margin-bottom: 1em;
   border: 0;
 }

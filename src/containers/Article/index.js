@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { SideBar } from 'components/SideBar';
+import SideBar from 'components/SideBar';
+import CodeBlock from 'components/CodeBlock';
 import siteConfig from 'siteConfig';
 import { fetchPost } from 'posts';
+import 'github-markdown-css';
 import './style.css';
 
 export class Article extends Component {
@@ -29,7 +31,7 @@ export class Article extends Component {
             </h1>
             <ReactMarkdown source={`\`${tag.join('` `')}\` - \`${time}\`\n`} />
             <div className="content">
-              <ReactMarkdown source={content} />
+              <ReactMarkdown source={content} renderers={{ CodeBlock }} />
             </div>
           </div>
         </article>

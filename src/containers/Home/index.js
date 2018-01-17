@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { SideBar } from 'components/SideBar';
-import { PostList } from 'components/PostList';
+import SideBar from 'components/SideBar';
+import PostList from 'components/PostList';
 import siteConfig from 'siteConfig';
 import posts from 'posts';
 import './style.css';

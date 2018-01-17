@@ -93,6 +93,7 @@
 }
 
 #footer .links li {
+  margin: 0;
   list-style: none;
 }
 
@@ -104,4 +105,5 @@
 #footer .copyright {
   font-size: 0.6em;
   line-height: 1em;
+  margin: 0;
 }
