@@ -65,6 +65,12 @@
   margin: 0;
 }
 
+#header h1,
+#header h2,
+#header p {
+  font-weight: 400;
+}
+
 #header p {
   font-size: 1em;
   line-height: 1.5em;
