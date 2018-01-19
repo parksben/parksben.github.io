@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { randomId } from 'utils';
 import defaultThumbs from './images';
 import './style.css';
 
 export class PostList extends Component {
   static propTypes = {
+    title: PropTypes.string,
     data: PropTypes.array,
+    goHome: PropTypes.bool,
   };
 
   static defaultProps = {
+    title: '文章列表',
     data: [
       {
         title: '示例文章',
@@ -19,6 +23,7 @@ export class PostList extends Component {
         url: '/',
       },
     ],
+    goHome: false,
   };
 
   _loadThumb = (thumb, i) => {
@@ -35,24 +40,42 @@ export class PostList extends Component {
 
   render() {
     const postItems = this.props.data.map((p, i) =>
-      <article className="post-item" key={`post-${p.date}-${p.title}`}>
+      <article className="post-item" key={`post-${p.time}-${p.title}`}>
         <Link className="thumb" to={p.url}>
           <img src={this._loadThumb(p.thumb, i)} alt="" />
         </Link>
+        <div className="tag-bar">
+          {p.tag.map(t =>
+            <Link to={`/tag/${t}`} key={`post_tag_${randomId()}`}>
+              <p>
+                {t}
+              </p>
+            </Link>
+          )}
+        </div>
         <Link to={p.url}>
           <h3 title={p.title}>
             {p.title}
           </h3>
         </Link>
-        <p>
+        <p className="time">
           {p.time}
         </p>
       </article>
     );
 
+    const goHome = this.props.goHome
+      ? <Link to="/" className="go-home">
+          <h2>← 返回主页</h2>
+        </Link>
+      : false;
+
     return (
       <section id="posts">
-        <h2>最新文章</h2>
+        {goHome}
+        <h2>
+          {this.props.title}
+        </h2>
         <div className="row">
           {postItems}
         </div>

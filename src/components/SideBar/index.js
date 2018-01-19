@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { randomId } from 'utils';
 import './style.css';
 
@@ -9,17 +10,16 @@ export class SideBar extends Component {
   };
 
   renderTag(tag) {
-    const items = tag.map(t =>
-      <p className="tag" key={`tag_${t}`}>
-        {t}
-      </p>
+    const items = tag.map(o =>
+      <Link
+        to={`/tag/${o.tag}`}
+        className="tag"
+        key={`tag_${randomId()}`}>
+        {o.tag} ({o.count})
+      </Link>
     );
 
-    return (
-      <div className="tag-container">
-        {items}
-      </div>
-    );
+    return items;
   }
 
   renderSocialLink(data) {
@@ -60,16 +60,19 @@ export class SideBar extends Component {
             className="avatar"
             style={{ backgroundImage: `url(${avatar})` }}
           />
-          <h1>
-            {title}
-          </h1>
+          <Link to="/">
+            <h1>
+              {title}
+            </h1>
+          </Link>
           <h2>
             {subTitle}
           </h2>
           <p>
             {intro}
           </p>
-          {this.renderTag(tag)}
+          <h3 className="tag-hot">TAGS TOP5:</h3>
+          {this.renderTag(tag.slice(0, 5))}
         </div>
         <footer id="footer">
           <div className="inner">

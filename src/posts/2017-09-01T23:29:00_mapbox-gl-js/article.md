@@ -1,7 +1,7 @@
 ===
 
 标题: 3D GIS 应用开发 —— 基于 Mapbox GL 的实践总结
-标签: GIS, webGL, 3D可视化, 前端开发
+标签: GIS, webGL, 3D可视化, 前端
 
 ===
 

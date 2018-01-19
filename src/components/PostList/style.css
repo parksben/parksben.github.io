@@ -1,5 +1,5 @@
 #posts {
-  padding: 6em 4em;
+  padding: 4em 4em 2em 4em;
   overflow: hidden;
 }
 
@@ -98,6 +98,29 @@
   transform: translate(0, -50%);
 }
 
+#posts .post-item .tag-bar {
+  margin-bottom: 0.6em;
+}
+
+#posts .post-item .tag-bar a {
+  display: inline-block;
+}
+
+#posts .post-item .tag-bar p {
+  font-size: 0.8em;
+  line-height: 1.5em;
+  margin-right: 0.4em;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  color: #a2a2a2;
+  background-color: #eee;
+}
+
+#posts .post-item .tag-bar p:hover {
+  color: #feffff;
+  background: #9c61ff;
+}
+
 #posts .post-item h3 {
   font-size: 1.2em;
   line-height: 1.6em;
@@ -109,9 +132,9 @@
   overflow: hidden;
 }
 
-#posts .post-item p {
+#posts .post-item p.time {
   font-size: 0.8em;
   line-height: 1.5em;
-  margin: 0;
   color: #a2a2a2;
+  margin: 0;
 }

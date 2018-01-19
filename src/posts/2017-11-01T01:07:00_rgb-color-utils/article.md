@@ -33,17 +33,17 @@ const colorMap = gradientColor('#bca380', '#00f', 4); // ['#bca380', '#8d7aa0', 
 
 ### parseColor(color)
 
-- `color` one RGB/HEX color string (`rgba(0, 23, 148)` or `#bf0081`)
+- `color` one RGB/HEX color string (`rgb(0, 23, 148)` or `#bf0081`)
 
 ### interpolate(from, to, step)
 
-- `from` the starting position RGB/HEX color string (`rgba(0, 23, 148)` or `#bf0081`)
+- `from` the starting position RGB/HEX color string (`rgb(0, 23, 148)` or `#bf0081`)
 - `to` the end position color string
 - `step` the normalized value (between 0 and 1) of the interpolation. A step of `0.5` would be the middle of `from` and `to`
 
 ### gradientColor(from, to, length)
 
-- `from` the starting position RGB/HEX color string (`rgba(0, 23, 148)` or `#bf0081`)
+- `from` the starting position RGB/HEX color string (`rgb(0, 23, 148)` or `#bf0081`)
 - `to` the end position color string
 - `length ` the length of the gradient colors array.
 

@@ -1,22 +1,51 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import SideBar from 'components/SideBar';
 import CodeBlock from 'components/CodeBlock';
+import * as ArticleActions from './actions';
 import siteConfig from 'siteConfig';
-import { fetchPost } from 'posts';
 import 'github-markdown-css';
 import './style.css';
 
+const mapStateToProps = ({ article }) => ({ article });
+
+const mapDispatchToProps = dispatch => ({
+  articleActions: bindActionCreators(ArticleActions, dispatch),
+});
+
 export class Article extends Component {
-  static contextTypes = {
-    router: PropTypes.object.isRequired,
+  static propTypes = {
+    article: PropTypes.object.isRequired,
+    articleActions: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+    const { postName } = this.props.match.params;
+    this.props.articleActions.fetchPostContent(postName);
+  }
+
+  componentDidUpdate(prevProps) {
+    const oldPostName = prevProps.match.params.postName;
+    const { postName } = this.props.match.params;
+
+    if (oldPostName !== postName) {
+      this.props.articleActions.resetPostContent();
+      this.props.articleActions.fetchPostContent(postName);
+    }
+  }
+
   render() {
-    const { postName } = this.context.router.route.match.params;
-    const { title, time, tag, content } = fetchPost(postName);
+    const {
+      postContent: { title, time, tag, content },
+    } = this.props.article.toJS();
+
+    if (!title) {
+      return false;
+    }
 
     return (
       <div className="page-container markdown-body">
@@ -40,4 +69,4 @@ export class Article extends Component {
   }
 }
 
-export default Article;
+export default connect(mapStateToProps, mapDispatchToProps)(Article);
