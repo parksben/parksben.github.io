@@ -1,16 +1,16 @@
 #posts {
-  padding: 4em 4em 2em 4em;
+  padding: 6em 4em 2em 4em;
   overflow: hidden;
 }
 
-#posts h2 {
+#posts .list-title {
   font-size: 1.4em;
   line-height: 2.2em;
-  margin: 0 0 1em 0;
+  margin: 1.6em 0 1em 0;
 }
 
 #posts .row {
-  margin: 0 0 -1px -2.5em;
+  margin: 2em 0 -1px -2.5em;
   border-bottom: solid 1px transparent;
   box-sizing: border-box;
 }
@@ -114,22 +114,28 @@
   border-radius: 3px;
   color: #a2a2a2;
   background-color: #eee;
+  transition: all 0.2s;
 }
 
 #posts .post-item .tag-bar p:hover {
   color: #feffff;
-  background: #9c61ff;
+  background: #40a9ff;
 }
 
-#posts .post-item h3 {
+#posts .post-item .post-title {
   font-size: 1.2em;
   line-height: 1.6em;
   margin: 0 0 0.5em 0;
   color: #787878;
+  transition: color 0.2s;
   max-width: 22em;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+#posts .post-item .post-title:hover {
+  color: #40a9ff;
 }
 
 #posts .post-item p.time {

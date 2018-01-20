@@ -9,3 +9,8 @@ body {
   width: 100%;
   font-size: 14px;
 }
+
+:root {
+  --side-bar-width: 25%;
+  --content-width: 75%;
+}

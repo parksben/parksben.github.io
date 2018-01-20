@@ -1,5 +1,5 @@
 #header {
-  width: 35%;
+  width: var(--side-bar-width);
   height: 100%;
   padding: 8em 4em;
   position: fixed;
@@ -10,7 +10,6 @@
   justify-content: space-between;
   text-align: right;
   background-color: #1f1815;
-  background-attachment: scroll, fixed;
   background-image: url(./images/side_bg.jpg);
   background-position: top left, top left;
   background-repeat: repeat, no-repeat;
@@ -26,70 +25,44 @@
   transition: all 0.3s;
 }
 
-#header > .inner {
-  flex-grow: 1;
-  margin: 0 0 2em 0;
-}
-
-#header > * {
-  flex-shrink: 0;
-  width: 100%;
-}
-
-#header .avatar {
-  display: inline-block;
-  margin: 0 0 1em 0;
+#header .blog-avatar {
+  margin-bottom: 1em;
   width: 8em;
   height: 8em;
-  border-radius: 100%;
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: center;
+  border-radius: 100%;
 }
 
-#header h1 {
+#header > .inner {
+  margin: 0 0 2em 0;
+}
+
+#header .blog-title {
   font-size: 1.8em;
   line-height: 2em;
   color: #f5f5f5;
 }
 
-#header h2 {
+#header .blog-subtitle {
   font-size: 1.4em;
   line-height: 2em;
 }
 
-#header h1,
-#header h2 {
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
-
-#header h1,
-#header h2,
-#header p {
+#header .blog-title,
+#header .blog-subtitle,
+#header .blog-desc {
   font-weight: 400;
 }
 
-#header p {
+#header .blog-desc {
   font-size: 1em;
   line-height: 1.5em;
 }
 
-#header h3.tag-hot {
-  font-size: 1.2em;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #f5f5f5;
-  margin-top: 3em;
-  margin-bottom: 1em;
-}
-
-#header .tag {
-  display: block;
-  font-size: 1em;
-  line-height: 1.5em;
-  padding: 0.4em 0.6em;
+.block-blank {
+  height: 20em;
 }
 
 #footer .links {

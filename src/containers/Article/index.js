@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import SideBar from 'components/SideBar';
+import GoBack from 'components/GoBack';
 import CodeBlock from 'components/CodeBlock';
+import Header from 'components/Header';
 import * as ArticleActions from './actions';
 import siteConfig from 'siteConfig';
 import 'github-markdown-css';
@@ -39,6 +40,14 @@ export class Article extends Component {
   }
 
   render() {
+    const navList = [
+      {
+        linkTo: '/',
+        tag: `全部文章（${siteConfig.postCount}）`,
+      },
+      ...siteConfig.tag,
+    ];
+
     const {
       postContent: { title, time, tag, content },
     } = this.props.article.toJS();
@@ -50,10 +59,9 @@ export class Article extends Component {
     return (
       <div className="page-container markdown-body">
         <SideBar data={siteConfig} />
+        <Header data={navList} />
         <article className="post-container">
-          <Link to="/" className="go-home">
-            <h2>← 返回主页</h2>
-          </Link>
+          <GoBack />
           <div className="inner">
             <h1>
               {title}

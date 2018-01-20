@@ -1,7 +1,8 @@
 import siteInfo from './site.json';
-import { countAllTag } from 'posts';
+import { fetchList, countAllTag } from 'posts';
 
 export default {
   ...siteInfo,
+  postCount: fetchList().total,
   tag: countAllTag(),
 };

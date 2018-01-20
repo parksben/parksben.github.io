@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBar from 'components/SideBar';
 import PostList from 'components/PostList';
+import Header from 'components/Header';
 import * as HomeActions from './actions';
 import { Button } from 'antd';
 import siteConfig from 'siteConfig';
@@ -23,7 +24,7 @@ export class Home extends Component {
 
   constructor(props) {
     super(props);
-    this.perPage = 4;
+    this.perPage = 6;
   }
 
   componentDidMount() {
@@ -37,7 +38,16 @@ export class Home extends Component {
   }
 
   render() {
+    const navList = [
+      {
+        linkTo: '/',
+        tag: `全部文章（${siteConfig.postCount}）`,
+      },
+      ...siteConfig.tag,
+    ];
+
     const { postList, loadMore } = this.props.home.toJS();
+
     const loadMoreBtn = loadMore
       ? <Button
           size="large"
@@ -51,7 +61,8 @@ export class Home extends Component {
       <div className="page-container">
         <SideBar data={siteConfig} />
         <div className="post-list">
-          <PostList title="最新文章" data={postList} />
+          <Header data={navList} activeTag={`全部文章（${siteConfig.postCount}）`} />
+          <PostList data={postList} />
           {loadMoreBtn}
         </div>
       </div>

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBar from 'components/SideBar';
 import PostList from 'components/PostList';
+import Header from 'components/Header';
 import * as TagPostActions from './actions';
 import { Button } from 'antd';
 import siteConfig from 'siteConfig';
@@ -23,7 +24,7 @@ export class TagPost extends Component {
 
   constructor(props) {
     super(props);
-    this.perPage = 4;
+    this.perPage = 6;
   }
 
   componentDidMount() {
@@ -51,7 +52,16 @@ export class TagPost extends Component {
 
   render() {
     const { tagName } = this.props.match.params;
-    const { total, postList, loadMore } = this.props.tagPost.toJS();
+    const navList = [
+      {
+        linkTo: '/',
+        tag: `全部文章（${siteConfig.postCount}）`,
+      },
+      ...siteConfig.tag,
+    ];
+
+    const { postList, loadMore } = this.props.tagPost.toJS();
+
     const loadMoreBtn = loadMore
       ? <Button
           size="large"
@@ -65,7 +75,8 @@ export class TagPost extends Component {
       <div className="page-container">
         <SideBar data={siteConfig} />
         <div className="post-list">
-          <PostList title={`标签：${tagName}(${total})`} goHome data={postList} />
+          <Header data={navList} activeTag={tagName} />
+          <PostList goHome data={postList} />
           {loadMoreBtn}
         </div>
       </div>

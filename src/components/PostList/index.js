@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import GoBack from 'components/GoBack';
 import { randomId } from 'utils';
 import defaultThumbs from './images';
 import './style.css';
 
 export class PostList extends Component {
   static propTypes = {
-    title: PropTypes.string,
     data: PropTypes.array,
     goHome: PropTypes.bool,
   };
 
   static defaultProps = {
-    title: '文章列表',
     data: [
       {
         title: '示例文章',
@@ -54,7 +53,7 @@ export class PostList extends Component {
           )}
         </div>
         <Link to={p.url}>
-          <h3 title={p.title}>
+          <h3 className="post-title" title={p.title}>
             {p.title}
           </h3>
         </Link>
@@ -64,18 +63,11 @@ export class PostList extends Component {
       </article>
     );
 
-    const goHome = this.props.goHome
-      ? <Link to="/" className="go-home">
-          <h2>← 返回主页</h2>
-        </Link>
-      : false;
+    const goHome = this.props.goHome ? <GoBack /> : false;
 
     return (
       <section id="posts">
         {goHome}
-        <h2>
-          {this.props.title}
-        </h2>
         <div className="row">
           {postItems}
         </div>

@@ -9,19 +9,6 @@ export class SideBar extends Component {
     data: PropTypes.object.isRequired,
   };
 
-  renderTag(tag) {
-    const items = tag.map(o =>
-      <Link
-        to={`/tag/${o.tag}`}
-        className="tag"
-        key={`tag_${randomId()}`}>
-        {o.tag} ({o.count})
-      </Link>
-    );
-
-    return items;
-  }
-
   renderSocialLink(data) {
     const items = data.map(d =>
       <li key={`social_${randomId()}`}>
@@ -48,38 +35,34 @@ export class SideBar extends Component {
       title,
       subTitle,
       intro,
-      tag,
       social,
       copyright,
     } = this.props.data;
 
     return (
       <header id="header">
+        <div
+          className="blog-avatar"
+          style={{ backgroundImage: `url(${avatar})` }}
+        />
         <div className="inner">
-          <div
-            className="avatar"
-            style={{ backgroundImage: `url(${avatar})` }}
-          />
-          <Link to="/">
-            <h1>
-              {title}
-            </h1>
+          <Link to="/" className="blog-title">
+            {title}
           </Link>
-          <h2>
+          <div className="blog-subtitle">
             {subTitle}
-          </h2>
-          <p>
+          </div>
+          <div className="blog-desc">
             {intro}
-          </p>
-          <h3 className="tag-hot">TAGS TOP5:</h3>
-          {this.renderTag(tag.slice(0, 5))}
+          </div>
         </div>
+        <div className="block-blank" />
         <footer id="footer">
           <div className="inner">
             {this.renderSocialLink(social)}
-            <p className="copyright">
+            <div className="copyright">
               {copyright}
-            </p>
+            </div>
           </div>
         </footer>
       </header>
