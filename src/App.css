@@ -5,12 +5,13 @@ body {
   height: 100%;
 }
 
-.page-container {
-  width: 100%;
-  font-size: 14px;
-}
-
 :root {
+  --main-font-size: 14px;
   --side-bar-width: 25%;
   --content-width: 75%;
+}
+
+.page-container {
+  width: 100%;
+  font-size: var(--main-font-size);
 }

@@ -14,6 +14,7 @@
   background-position: top left, top left;
   background-repeat: repeat, no-repeat;
   background-size: auto, auto 100%;
+  font-size: var(--main-font-size);
 }
 
 #header * {

@@ -6,6 +6,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { createRoutes } from 'routes';
 import configureStore from 'store';
 import 'normalize.css';
+import 'github-markdown-css';
 import 'antd/dist/antd.css';
 import 'App.css';
 

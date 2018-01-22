@@ -9,7 +9,6 @@ import CodeBlock from 'components/CodeBlock';
 import Header from 'components/Header';
 import * as ArticleActions from './actions';
 import siteConfig from 'siteConfig';
-import 'github-markdown-css';
 import './style.css';
 
 const mapStateToProps = ({ article }) => ({ article });
