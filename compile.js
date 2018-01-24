@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const sortBy = require('lodash').sortBy;
 
 const postDir = 'src/posts/';
 const allPost = fs
@@ -37,8 +38,37 @@ const postData = allPost.map(p => {
 });
 
 fs.writeFileSync(
-  path.join(path.resolve('src/posts'), 'data.json'),
+  path.join(path.resolve('public/'), 'data.json'),
   JSON.stringify(postData),
+  'utf-8'
+);
+
+const getTagInfo = () => {
+  const tagList = [];
+  postData.forEach(p => {
+    p.tag.forEach(t => {
+      if (!tagList.find(o => o.tag === t)) {
+        tagList.push({
+          tag: t,
+          count: 1,
+        });
+      } else {
+        const tagIdx = tagList.findIndex(o => o.tag === t);
+        tagList[tagIdx].count += 1;
+      }
+    });
+  });
+
+  return sortBy(tagList, o => -o.count);
+};
+const postInfo = {
+  postCount: postData.length,
+  tagInfo: getTagInfo(),
+};
+
+fs.writeFileSync(
+  path.join(path.resolve('src/posts'), 'data.json'),
+  JSON.stringify(postInfo),
   'utf-8'
 );
 

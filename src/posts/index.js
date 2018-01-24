@@ -1,14 +1,22 @@
 import { sortBy } from 'lodash';
-import postList from './data.json';
+import axios from 'axios';
+
+export const getPostList = async () => {
+  const postList = await axios.get('/data.json');
+
+  return postList.data;
+};
 
 const PER_PAGE = 10;
 const INIT_PAGE = 1;
 
-export const fetchList = (
+export const fetchList = async (
   perPage = PER_PAGE,
   page = INIT_PAGE,
   isReverse = true
 ) => {
+  const postList = await getPostList();
+
   const reverse = isReverse ? -1 : 1;
   const allPost = sortBy(postList, p => reverse * Date.parse(p.time));
 
@@ -20,10 +28,15 @@ export const fetchList = (
   };
 };
 
-export const fetchPost = postName =>
-  postList.find(p => p.url.includes(postName));
+export const fetchPost = async postName => {
+  const postList = await getPostList();
 
-export const countAllTag = () => {
+  return postList.find(p => p.url.includes(postName));
+};
+
+export const countAllTag = async () => {
+  const postList = await getPostList();
+
   const tagList = [];
   postList.forEach(p => {
     p.tag.forEach(t => {
@@ -42,12 +55,14 @@ export const countAllTag = () => {
   return sortBy(tagList, o => -o.count);
 };
 
-export const fetchPostByTag = (
+export const fetchPostByTag = async (
   tagName,
   perPage = PER_PAGE,
   page = INIT_PAGE,
   isReverse = true
 ) => {
+  const postList = await getPostList();
+
   const reverse = isReverse ? -1 : 1;
   const result = postList.filter(p => p.tag.includes(tagName));
   const collection = sortBy(result, p => reverse * Date.parse(p.time));
@@ -61,4 +76,4 @@ export const fetchPostByTag = (
   };
 };
 
-export default postList;
+export default getPostList;

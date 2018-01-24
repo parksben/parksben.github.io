@@ -5,8 +5,8 @@ export const resetPostContent = () => ({
   type: at.RESET_POST_CONTENT,
 });
 
-export const fetchPostContent = postName => dispatch => {
-  const postContent = fetchPost(postName);
+export const fetchPostContent = postName => async dispatch => {
+  const postContent = await fetchPost(postName);
   dispatch({
     type: at.FETCH_POST_CONTENT,
     data: postContent,
