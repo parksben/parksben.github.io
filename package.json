@@ -9,11 +9,10 @@
     "core-js": "^2.5.1",
     "github-markdown-css": "^2.10.0",
     "immutable": "3.8.1",
-    "inquirer": "^5.0.0",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "normalize.css": "^7.0.0",
-    "prismjs": "^1.9.0",
+    "prismjs": "^1.10.0",
     "prop-types": "15.5.8",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -37,7 +36,9 @@
     "deploy": "gh-pages -b master -d build"
   },
   "devDependencies": {
+    "fs-extra": "^5.0.0",
     "gh-pages": "^1.1.0",
+    "inquirer": "^5.0.1",
     "react-app-rewired": "^1.4.0"
   }
 }

@@ -29,16 +29,11 @@ export class PostList extends Component {
     if (!thumb.length) {
       return defaultThumbs[i % defaultThumbs.length];
     }
-    if (/http(s)?/gi.test(thumb)) {
-      return thumb;
-    }
-
-    const image = require(`../../${thumb}`);
-    return image;
+    return thumb;
   };
 
   render() {
-    const postItems = this.props.data.map((p, i) =>
+    let postItems = this.props.data.map((p, i) =>
       <article className="post-item" key={`post-${p.time}-${p.title}`}>
         <Link className="thumb" to={p.url}>
           <img src={this._loadThumb(p.thumb, i)} alt="" />
@@ -69,7 +64,7 @@ export class PostList extends Component {
       <section id="posts">
         {goHome}
         <div className="row">
-          {postItems}
+          {postItems.length ? postItems : <h2>正在获取文章列表...</h2>}
         </div>
       </section>
     );

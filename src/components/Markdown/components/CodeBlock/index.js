@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Prism from 'prismjs';
+import { highlight, languages } from 'prismjs';
 import ReactHtmlParser from 'react-html-parser';
 import 'prismjs/themes/prism.css';
 
@@ -21,10 +21,7 @@ export class CodeBlock extends Component {
   };
 
   render() {
-    const html = Prism.highlight(
-      this.props.literal,
-      Prism.languages[this.props.language]
-    );
+    const html = highlight(this.props.literal, languages[this.props.language]);
     const cls = `language-${this.props.language}`;
 
     return (

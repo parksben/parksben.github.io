@@ -1,5 +1,13 @@
 import * as at from './actionTypes';
-import { fetchList } from 'posts';
+import { getPostInfo, fetchList } from 'posts';
+
+export const fetchPostInfo = () => async dispatch => {
+  const postInfo = await getPostInfo();
+  dispatch({
+    type: at.GET_POST_INFO,
+    data: postInfo,
+  });
+};
 
 export const resetPostList = () => ({
   type: at.RESET_POST_LIST,

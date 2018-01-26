@@ -1,8 +1,20 @@
 import { sortBy } from 'lodash';
 import axios from 'axios';
 
+let postInfo = {};
+export const getPostInfo = async () => {
+  if (!postInfo.data) {
+    postInfo = await axios.get('/stat.json');
+  }
+
+  return postInfo.data;
+};
+
+let postList = {};
 export const getPostList = async () => {
-  const postList = await axios.get('/data.json');
+  if (!postList.data) {
+    postList = await axios.get('/data.json');
+  }
 
   return postList.data;
 };

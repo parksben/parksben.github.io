@@ -28,6 +28,8 @@ export class TagPost extends Component {
   }
 
   componentDidMount() {
+    this.props.tagPostActions.fetchPostInfo();
+
     const { tagName } = this.props.match.params;
     this.props.tagPostActions.setTagName(tagName);
     this._loadPage(1);
@@ -52,15 +54,20 @@ export class TagPost extends Component {
 
   render() {
     const { tagName } = this.props.match.params;
+
+    const {
+      postInfo: { postCount, tagInfo },
+      postList,
+      loadMore,
+    } = this.props.tagPost.toJS();
+
     const navList = [
       {
         linkTo: '/',
-        tag: `全部文章（${siteConfig.postCount}）`,
+        tag: `全部文章（${postCount}）`,
       },
-      ...siteConfig.tag,
+      ...tagInfo,
     ];
-
-    const { postList, loadMore } = this.props.tagPost.toJS();
 
     const loadMoreBtn = loadMore
       ? <Button

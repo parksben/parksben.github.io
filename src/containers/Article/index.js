@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'components/Markdown';
 import SideBar from 'components/SideBar';
 import GoBack from 'components/GoBack';
-import CodeBlock from 'components/CodeBlock';
 import Header from 'components/Header';
 import * as ArticleActions from './actions';
 import siteConfig from 'siteConfig';
@@ -24,6 +23,8 @@ export class Article extends Component {
   };
 
   componentDidMount() {
+    this.props.articleActions.fetchPostInfo();
+
     const { postName } = this.props.match.params;
     this.props.articleActions.fetchPostContent(postName);
   }
@@ -39,21 +40,18 @@ export class Article extends Component {
   }
 
   render() {
-    const navList = [
-      {
-        linkTo: '/',
-        tag: `全部文章（${siteConfig.postCount}）`,
-      },
-      ...siteConfig.tag,
-    ];
-
     const {
+      postInfo: { postCount, tagInfo },
       postContent: { title, time, tag, content },
     } = this.props.article.toJS();
 
-    if (!title) {
-      return false;
-    }
+    const navList = [
+      {
+        linkTo: '/',
+        tag: `全部文章（${postCount}）`,
+      },
+      ...tagInfo,
+    ];
 
     return (
       <div className="page-container markdown-body">
@@ -65,9 +63,11 @@ export class Article extends Component {
             <h1>
               {title}
             </h1>
-            <ReactMarkdown source={`\`${tag.join('` `')}\` - \`${time}\`\n`} />
+            {time
+              ? <Markdown source={`\`${tag.join('` `')}\` - \`${time}\`\n`} />
+              : <h1>标题加载中...</h1>}
             <div className="content">
-              <ReactMarkdown source={content} renderers={{ CodeBlock }} />
+              {content ? <Markdown source={content} /> : <h2>内容加载中...</h2>}
             </div>
           </div>
         </article>

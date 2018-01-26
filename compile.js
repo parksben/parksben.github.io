@@ -1,15 +1,15 @@
-const fs = require('fs');
+// const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const sortBy = require('lodash').sortBy;
 
-const postDir = 'src/posts/';
 const allPost = fs
-  .readdirSync(path.resolve(postDir))
+  .readdirSync(path.resolve('src/posts/'))
   .filter(d => /^\d{4}-/gi.test(d));
 
 const postData = allPost.map(p => {
   const article = fs.readFileSync(
-    path.resolve(`${postDir}${p}/article.md`),
+    path.resolve(`src/posts/${p}/article.md`),
     'utf-8'
   );
   const titleHandler = /标题(:|：).+\n/gi.exec(article);
@@ -22,17 +22,45 @@ const postData = allPost.map(p => {
   const tag = tagHandler.length
     ? tagHandler[0].replace(/(标签(:|：)\s*|\n)/gi, '').split(/,\s?/gi)
     : '';
-  const content = contentHandler.length
+  const time = p.split('_')[0].replace('T', ' ');
+  let content = contentHandler.length
     ? contentHandler[contentHandler.length - 1].replace('\n', '')
     : '';
-  const time = p.split('_')[0].replace('T', ' ');
+
+  // 拷贝文章中的图片到 public 目录下
+  const imgPatt = /\!\[[^\]]*?\]\(([^\)]*?)\)/gi;
+  const imgMatches = content.match(imgPatt);
+  if (imgMatches) {
+    imgMatches.forEach(imgMark => {
+      if (!imgMark.includes('http')) {
+        const imgPath = imgMark.replace(imgPatt, '$1');
+        content = content.replace(
+          imgPath,
+          path.join(`/contents/${p}/`, imgPath)
+        );
+
+        fs.ensureDirSync(path.resolve(`public/contents/${p}/`));
+        fs.copySync(
+          path.resolve(`src/posts/${p}/`, imgPath),
+          path.resolve(`public/contents/${p}/`, imgPath)
+        );
+      }
+    });
+  }
+
+  // 拷贝文章缩略图到 public 目录下
+  fs.ensureDirSync(path.resolve(`public/contents/${p}/`));
+  fs.copySync(
+    path.resolve(`src/posts/${p}/`, 'thumb.jpg'),
+    path.resolve(`public/contents/${p}/`, 'thumb.jpg')
+  );
 
   return {
     title,
     tag,
     time,
     url: `/post/${p}`,
-    thumb: `posts/${p}/thumb.jpg`,
+    thumb: `/contents/${p}/thumb.jpg`,
     content,
   };
 });
@@ -67,7 +95,7 @@ const postInfo = {
 };
 
 fs.writeFileSync(
-  path.join(path.resolve('src/posts'), 'data.json'),
+  path.join(path.resolve('public/'), 'stat.json'),
   JSON.stringify(postInfo),
   'utf-8'
 );

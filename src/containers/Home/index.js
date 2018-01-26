@@ -28,6 +28,7 @@ export class Home extends Component {
   }
 
   componentDidMount() {
+    this.props.homeActions.fetchPostInfo();
     this.props.homeActions.resetPostList();
     this._loadPage(1);
   }
@@ -38,15 +39,19 @@ export class Home extends Component {
   }
 
   render() {
+    const {
+      postInfo: { postCount, tagInfo },
+      postList,
+      loadMore,
+    } = this.props.home.toJS();
+
     const navList = [
       {
         linkTo: '/',
-        tag: `全部文章（${siteConfig.postCount}）`,
+        tag: `全部文章（${postCount}）`,
       },
-      ...siteConfig.tag,
+      ...tagInfo,
     ];
-
-    const { postList, loadMore } = this.props.home.toJS();
 
     const loadMoreBtn = loadMore
       ? <Button
@@ -61,7 +66,7 @@ export class Home extends Component {
       <div className="page-container">
         <SideBar data={siteConfig} />
         <div className="post-list">
-          <Header data={navList} activeTag={`全部文章（${siteConfig.postCount}）`} />
+          <Header data={navList} activeTag={`全部文章（${postCount}）`} />
           <PostList data={postList} />
           {loadMoreBtn}
         </div>
