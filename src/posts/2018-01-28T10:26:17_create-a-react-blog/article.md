@@ -1,17 +1,17 @@
 ===
 
-标题: 快速搭建你的 github page 个人博客 —— 基于 Create-React-App 的单页面应用实践
+标题: 快速搭建你的 github pages 个人博客 —— 基于 Create-React-App 的单页面应用实践
 标签: 前端, nodejs, react
 
 ===
 
-相信各位github资深玩家们都有自己基于 `github page` 搭建的个人站点。官方推荐的静态站点生成器是 `Jekyll`，关于 `Jekyll` 的使用感兴趣的各位请自行 google，这里就不赘述了。本文主要介绍下基于 `Create-React-App` 搭建个人博客的相关实践，可能更适合做前端开发的伙伴。
+相信各位github资深玩家们都有自己基于 `github pages` 搭建的个人站点。官方推荐的静态站点生成器是 `Jekyll`，关于 `Jekyll` 的使用感兴趣的各位请自行 google，这里就不赘述了。本文主要介绍下基于 `Create-React-App` 搭建个人博客的相关实践，可能更适合做前端开发的伙伴。
 
-![react app](./thumb.jpg)
+![github pages](./thumb.jpg)
 
-`github page` 是 `github` 推出的静态站点服务，主要的用途在于使用你在 `github` 仓库中的代码构建你自己的静态站点，为用户提供 `github.io` 二级域名，您也可以通过添加DNS的 `CNAME` 记录来绑定自己的域名。
+`github pages` 是 `github` 推出的静态站点服务，主要的用途在于使用你在 `github` 仓库中的代码构建你自己的静态站点，为用户提供 `github.io` 二级域名，您也可以通过添加DNS的 `CNAME` 记录来绑定自己的域名。
 
-`github page` 最简单粗暴的方法就是直接往 github 上方静态页面了，创建一个名为 `[您的github账号名].github.io` 的github仓库，将您的index.html页面代码扔进master分支，就可以直接通过 `https://[您的github账号名].github.io` 访问到您的站点了。
+`github pages` 最简单粗暴的方法就是直接往 github 上方静态页面了，创建一个名为 `[您的github账号名].github.io` 的github仓库，将您的index.html页面代码扔进master分支，就可以直接通过 `https://[您的github账号名].github.io` 访问到您的站点了。
 
 对于一个简单的个人博客站点来说，存在以下基本功能特性：
 
@@ -92,7 +92,7 @@ inquirer
   .then(answers => {
     // 获取用户输入
     const { post_name, create_at } = answers;
-  
+
     /* 此处做一些命令行反馈和过程性的工作 */
     /* （如：提示用户输入是否合法、创建文章对应的目录和文件等等） */
   })
@@ -304,7 +304,7 @@ export default Header;
 
 ### 4.1 关于文章评论
 
-* [在GitHub Pages中加入Disqus评论系统](http://www.forestofhorizon.com/notesofstudy/2015/12/01/adding-disqus-to-github-pages/)
+* [在github pagess中加入Disqus评论系统](http://www.forestofhorizon.com/notesofstudy/2015/12/01/adding-disqus-to-github-pages/)
 * [使用 GitHub Issues 搭建评论系统](https://imsun.net/posts/gitment-introduction/)
 
 ### 4.2 关于文章结构树
@@ -315,9 +315,9 @@ export default Header;
 我最近应该会实现一个React用途的markdown树组件，大家不妨期待下☺️
 
 ## 5. 发布你的个人静态站点
-### 5.1 部署到 github page（基于 gh-pages）
+### 5.1 部署到 github pages（基于 gh-pages）
 
-CRA针对github page用途专门推荐了一个包：[gh-pages](https://github.com/tschaub/gh-pages)，使用方法如下：
+CRA针对github pages用途专门推荐了一个包：[gh-pages](https://github.com/tschaub/gh-pages)，使用方法如下：
 
 （1）修改项目的`package.json`文件，添加homepage属性：
 
@@ -341,11 +341,11 @@ CRA针对github page用途专门推荐了一个包：[gh-pages](https://github.c
 yarn deploy
 ```
 
-gh-pages会将CRA项目build到仓库的master分支，然后，你就可以访问你的站点了（有关 CRA 项目部署到 github page 的详细描述可以看[这里](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages)）。
+gh-pages会将CRA项目build到仓库的master分支，然后，你就可以访问你的站点了（有关 CRA 项目部署到 github pages 的详细描述可以看[这里](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages)）。
 
 ### 5.2 如何兼容 React 的客户端路由（一种比较 hack 的方法）
 
-单页面应用一般需要设置服务端路由，将应用的所有页面路径都重定向到index.html，而github page并没有这样的默认设置。
+单页面应用一般需要设置服务端路由，将应用的所有页面路径都重定向到index.html，而github pages并没有这样的默认设置。
 
 因而，当你使用React的客户端路由（React的createBrowserHistory方法创建前端路由）时，除根路径以外的页面，github都会返回自己的404页面。
 
