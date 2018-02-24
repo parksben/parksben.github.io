@@ -6,6 +6,7 @@ import Markdown from 'components/Markdown';
 import SideBar from 'components/SideBar';
 import GoBack from 'components/GoBack';
 import Header from 'components/Header';
+import MarkNav from 'components/MarkNav';
 import * as ArticleActions from './actions';
 import siteConfig from 'siteConfig';
 import './style.css';
@@ -70,6 +71,11 @@ export class Article extends Component {
               {content ? <Markdown source={content} /> : <h2>内容加载中...</h2>}
             </div>
           </div>
+          <MarkNav
+            className="article-menu"
+            source={content}
+            headingTopOffset={80}
+          />
         </article>
       </div>
     );
