@@ -10,7 +10,7 @@
     "github-markdown-css": "^2.10.0",
     "immutable": "3.8.1",
     "lodash": "^4.17.4",
-    "markdown-navbar": "^1.0.1",
+    "markdown-navbar": "^1.0.5",
     "moment": "^2.20.1",
     "normalize.css": "^7.0.0",
     "prismjs": "^1.10.0",

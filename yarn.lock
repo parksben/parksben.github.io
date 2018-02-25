@@ -4428,9 +4428,9 @@ markdown-escapes@^1.0.0:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/markdown-escapes/download/markdown-escapes-1.0.1.tgz#1994df2d3af4811de59a6714934c2b2292734518"
 
-markdown-navbar@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/markdown-navbar/-/markdown-navbar-1.0.1.tgz#642cd98ff2333d31c7dcd110f9a230c1ac090ccd"
+markdown-navbar@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/markdown-navbar/-/markdown-navbar-1.0.5.tgz#75c4b08395aa0c7027a66e4029129c6a76b9e158"
   dependencies:
     core-js "^2.5.3"
     prop-types "^15.6.0"
