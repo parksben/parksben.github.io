@@ -22,7 +22,7 @@ npm install markdown-navbar
 
 ## Usage
 
-```
+```js
 import MarkNav from 'markdown-navbar';
 import 'markdown-navbar/dist/navbar.css';
 
