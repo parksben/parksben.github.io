@@ -6,10 +6,11 @@ import Markdown from 'components/Markdown';
 import SideBar from 'components/SideBar';
 import GoBack from 'components/GoBack';
 import Header from 'components/Header';
-import MarkNav from 'components/MarkNav';
+import MarkNav from 'markdown-navbar';
 import * as ArticleActions from './actions';
 import siteConfig from 'siteConfig';
 import './style.css';
+import 'markdown-navbar/dist/navbar.css';
 
 const mapStateToProps = ({ article }) => ({ article });
 

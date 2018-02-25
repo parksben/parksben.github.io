@@ -312,7 +312,9 @@ export default Header;
 * [TreeMDown](https://github.com/hollodotme/TreeMDown)
 * [markdown-tree](https://github.com/hughsk/markdown-tree)
 
-我最近应该会实现一个React用途的markdown树组件，大家不妨期待下☺️
+我最近写了一个md文章的目录组件，各位大佬高兴的话可以赏个star:
+
+* [Markdown-Navbar](https://github.com/parksben/markdown-navbar)
 
 ## 5. 发布你的个人静态站点
 ### 5.1 部署到 github pages（基于 gh-pages）

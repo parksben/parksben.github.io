@@ -1676,7 +1676,7 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "http://registry.npm.taobao.org/core-js/download/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
-core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.1:
+core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.1, core-js@^2.5.3:
   version "2.5.3"
   resolved "http://registry.npm.taobao.org/core-js/download/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
 
@@ -4428,6 +4428,14 @@ markdown-escapes@^1.0.0:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/markdown-escapes/download/markdown-escapes-1.0.1.tgz#1994df2d3af4811de59a6714934c2b2292734518"
 
+markdown-navbar@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/markdown-navbar/-/markdown-navbar-1.0.1.tgz#642cd98ff2333d31c7dcd110f9a230c1ac090ccd"
+  dependencies:
+    core-js "^2.5.3"
+    prop-types "^15.6.0"
+    react "^16.2.0"
+
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "http://registry.npm.taobao.org/math-expression-evaluator/download/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
@@ -6066,7 +6074,7 @@ react-slick@~0.16.0:
     object-assign "^4.1.0"
     slick-carousel "^1.6.0"
 
-react@^16.0.0:
+react@^16.0.0, react@^16.2.0:
   version "16.2.0"
   resolved "http://registry.npm.taobao.org/react/download/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
   dependencies:
