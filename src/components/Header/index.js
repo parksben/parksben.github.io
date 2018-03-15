@@ -57,7 +57,8 @@ export class Header extends Component {
   }
 
   renderTop5() {
-    const items = this.props.data.slice(0, this.navTotal - 1).map(t =>
+    const navData = this.props.data.slice(0, this.navTotal - 1);
+    const items = navData.map(t =>
       <Link
         className={`header-nav-item ${this.props.activeTag === t.tag
           ? 'active'

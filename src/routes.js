@@ -1,21 +1,31 @@
-import Home from 'containers/Home';
-import TagPost from 'containers/TagPost';
-import Article from 'containers/Article';
+import React from 'react';
+import Loadable from 'react-loadable';
+
+const Loading = () => <div className="page-loading">Loading...</div>;
 
 export const createRoutes = () => {
   const home = {
     path: '/',
-    component: Home,
+    component: Loadable({
+      loader: () => import('containers/Home'),
+      loading: Loading,
+    }),
     exact: true,
   };
   const tagPost = {
     path: '/tag/:tagName',
-    component: TagPost,
+    component: Loadable({
+      loader: () => import('containers/TagPost'),
+      loading: Loading,
+    }),
     exact: true,
   };
   const article = {
     path: '/post/:postName',
-    component: Article,
+    component: Loadable({
+      loader: () => import('containers/Article'),
+      loading: Loading,
+    }),
     exact: true,
   };
   return [home, tagPost, article];

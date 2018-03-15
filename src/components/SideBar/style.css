@@ -9,11 +9,7 @@
   align-items: flex-end;
   justify-content: space-between;
   text-align: right;
-  background-color: #1f1815;
-  background-image: url(./images/side_bg.jpg);
-  background-position: top left, top left;
-  background-repeat: repeat, no-repeat;
-  background-size: auto, auto 100%;
+  background-color: #333;
   font-size: var(--main-font-size);
 }
 
