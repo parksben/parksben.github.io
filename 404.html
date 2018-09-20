@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <title>矮大紧的日常 | parksben's blog</title>
     <script type="text/javascript">
+      var project_pages = ['china-map-vis'];
+      // 如果是 github 项目主页，则强制浏览器从服务器重新获取当前页面资源，而不是从浏览器的缓存中读取
+      if (project_pages.includes(window.location.pathname.replace(/\//gi, ''))) {
+        window.location.reload(true);
+      }
+    </script>
+    <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // https://github.com/rafrex/spa-github-pages
       // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
