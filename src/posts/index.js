@@ -4,7 +4,7 @@ import axios from 'axios';
 let postInfo = {};
 export const getPostInfo = async () => {
   if (!postInfo.data) {
-    postInfo = await axios.get('/stat.json');
+    postInfo = await axios.get(`/stat.json?t=${Date.now()}`);
   }
 
   return postInfo.data;
@@ -13,7 +13,7 @@ export const getPostInfo = async () => {
 let postList = {};
 export const getPostList = async () => {
   if (!postList.data) {
-    postList = await axios.get('/data.json');
+    postList = await axios.get(`/data.json?t=${Date.now()}`);
   }
 
   return postList.data;
