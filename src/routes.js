@@ -28,5 +28,13 @@ export const createRoutes = () => {
     }),
     exact: true,
   };
-  return [home, tagPost, article];
+  const maskingDanmakuDemo = {
+    path: '/masking-danmaku-demo',
+    component: Loadable({
+      loader: () => import('containers/MaskingDanmakuDemo'),
+      loading: Loading,
+    }),
+    exact: true,
+  };
+  return [home, tagPost, article, maskingDanmakuDemo];
 };

@@ -1,0 +1,17 @@
+.danmaku-container,
+.danmaku-video {
+  width: 880px;
+  height: 540px;
+}
+
+.danmaku-container {
+  margin: 0 auto;
+  margin-top: 50vh;
+  margin-left: 50vw;
+  transform: translate(-50%, -50%);
+  background-color: #ddd;
+}
+
+.danmaku-video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
